@@ -47,7 +47,10 @@ namespace DatingApp.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto UserToRegisterDto)
         {
+            // throw new Exception("Mówi nie");
+            
             // sprawdzam czy dany użytkownik jest w bazie 
+            
             var userFromRepo = await repo.Login(UserToRegisterDto.UserName.ToLower(), UserToRegisterDto.Password);
             if (userFromRepo == null)
                 return Unauthorized();

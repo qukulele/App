@@ -7,6 +7,7 @@ import { NavComponent } from './nav/nav.component';
 import { AuthService } from './services/Auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import {ErrorInterceptorProvide} from './services/error.interceptor';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { RegisterComponent } from './register/register.component';
    ],
    // tutaj są servisy jakich używam
    providers: [
-      AuthService
+      AuthService,
+      ErrorInterceptorProvide
    ],
    bootstrap: [
       AppComponent
