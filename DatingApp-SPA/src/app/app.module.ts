@@ -8,7 +8,9 @@ import { AuthService } from './services/Auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import {ErrorInterceptorProvide} from './services/error.interceptor';
+import { AlertyfiService } from './services/alertyfi.service';
 
+import { BsDropdownModule } from 'ngx-bootstrap';
 
 @NgModule({
     // tutaj sią zarejestrowane componenty jakich uzywam
@@ -21,12 +23,14 @@ import {ErrorInterceptorProvide} from './services/error.interceptor';
    imports: [
       BrowserModule,
       HttpClientModule,
-      FormsModule
+      FormsModule,
+      BsDropdownModule.forRoot(),
    ],
    // tutaj są servisy jakich używam
    providers: [
       AuthService,
-      ErrorInterceptorProvide
+      ErrorInterceptorProvide,
+      AlertyfiService
    ],
    bootstrap: [
       AppComponent

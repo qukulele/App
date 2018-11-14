@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../services/Auth.service';
+import { AlertyfiService } from '../services/alertyfi.service';
 
 @Component({
   selector: 'app-register',
@@ -13,23 +14,22 @@ export class RegisterComponent implements OnInit {
   // do przekazywania danych z child component do parent component słuzy Output
   @Output() cancelRegister = new EventEmitter();
   model: any = {};
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private alertify: AlertyfiService) { }
 
   ngOnInit() {
   }
 
   register() {
     this.authService.register(this.model).subscribe (() => {
-      console.log('register successful');
+      this.alertify.success('register successful');
     }, error => {
-      console.log(error);
+      this.alertify.error(error);
     });
   }
 
   cancel() {
     // tą metodą przekazujemy dane do parent component, możemy rózne rzeczy przekazać, obiekt, zmienna itp
     this.cancelRegister.emit(false);
-    console.log('canceled');
   }
 
 }

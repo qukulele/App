@@ -37,3 +37,9 @@ typings
 # System Files
 .DS_Store
 Thumbs.db
+DatingApp/DatingApp.db
+package-lock.json
+package.json
+*.json
+.gitignore
+angular.json

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/Auth.service';
+import { AlertyfiService } from '../services/alertyfi.service';
 
 @Component({
   selector: 'app-nav',
@@ -10,28 +11,31 @@ export class NavComponent implements OnInit {
   // w modelu jest to co przychodzi z formularza logowania
   model: any = {};
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService, private alertify: AlertyfiService) { }
 
   ngOnInit() {
   }
 
   login() {
     this.authService.login(this.model).subscribe(next => {
-      console.log('Logged in successfully');
+      this.alertify.success('Logowanie udane');
     }, error => {
-      console.log(error);
+      this.alertify.error(error);
     });
   }
 
   loggedIn() {
     // do stałej token pobieramy z pamięci podręcznej token uzytkownika
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
     // zwraca true or false
-    return !!token;
+    // return !!token;
+
+    // to jest nowa wersja używająca jwt
+    return this.authService.loggedIn();
   }
 
   logOut() {
     localStorage.removeItem('token');
-    console.log('logged out');
+    this.alertify.message('Wylogowano');
   }
 }

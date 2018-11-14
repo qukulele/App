@@ -40,3 +40,10 @@ Thumbs.db
 DatingApp/DatingApp.db
 
 DatingApp/DatingApp.db
+DatingApp-SPA/package-lock.json
+DatingApp-SPA/package.json
+package-lock.json
+.gitignore
+DatingApp-SPA/package-lock.json
+DatingApp-SPA/angular.json
+DatingApp-SPA/.gitignore
