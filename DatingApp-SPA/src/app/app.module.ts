@@ -11,29 +11,40 @@ import {ErrorInterceptorProvide} from './services/error.interceptor';
 import { AlertyfiService } from './services/alertyfi.service';
 
 import { BsDropdownModule } from 'ngx-bootstrap';
+import { MemberListComponent } from './member-list/member-list.component';
+import { ListsComponent } from './lists/lists.component';
+import { MessagesComponent } from './messages/messages.component';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './routes';
+import { AutchGuard } from './guards/autch.guard';
 
 @NgModule({
-    // tutaj sią zarejestrowane componenty jakich uzywam
+   // tutaj sią zarejestrowane componenty jakich uzywam\
    declarations: [
       AppComponent,
       NavComponent,
       HomeComponent,
-      RegisterComponent
+      RegisterComponent,
+      MemberListComponent,
+      ListsComponent,
+      MessagesComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
       BsDropdownModule.forRoot(),
+      RouterModule.forRoot(appRoutes)
    ],
-   // tutaj są servisy jakich używam
+   // tutaj sąservisy jakich używam
    providers: [
       AuthService,
       ErrorInterceptorProvide,
-      AlertyfiService
+      AlertyfiService,
+      AutchGuard
    ],
    bootstrap: [
       AppComponent
-   ]
+   ],
 })
 export class AppModule { }
